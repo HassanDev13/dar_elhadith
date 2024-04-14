@@ -46,19 +46,4 @@ class User extends Authenticatable
         ];
     }
 
-
-    /**
-     * The courses that belong to the user.
-     */
-    public function courses(): BelongsToMany
-    {
-        return $this->belongsToMany(Course::class, "enrollments", "user_id", "course_id");
-    }
-    /**
-     * The lessons that belong to the user.
-     */
-    public function lessons(): BelongsToMany
-    {
-        return $this->belongsToMany(Lesson::class, "progress", "user_id", "lesson_id");
-    }
 }
