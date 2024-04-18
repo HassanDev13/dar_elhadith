@@ -4,7 +4,7 @@
     "/build/assets/ApplicationLogo-VXSMMN2A.js"
   ],
   "resources/js/Components/Checkbox.tsx": [
-    "/build/assets/Login-Bnqu3TBq.js"
+    "/build/assets/Login-ClPBnP6E.js"
   ],
   "resources/js/Components/DangerButton.tsx": [
     "/build/assets/DeleteUserForm-DXa5TyIa.js"
@@ -49,7 +49,7 @@
     "/build/assets/ForgotPassword-DRZFvEUM.js"
   ],
   "resources/js/Pages/Auth/Login.tsx": [
-    "/build/assets/Login-Bnqu3TBq.js"
+    "/build/assets/Login-ClPBnP6E.js"
   ],
   "resources/js/Pages/Auth/Register.tsx": [
     "/build/assets/Register-C6L9bdMP.js"
@@ -76,7 +76,7 @@
     "/build/assets/UpdateProfileInformationForm-BLc6rV1x.js"
   ],
   "resources/js/Pages/Welcome.tsx": [
-    "/build/assets/Welcome-CCytuGWU.js"
+    "/build/assets/Welcome-VOcQFyyw.js"
   ],
   "resources/js/ssr.tsx": [],
   "vendor/tightenco/ziggy/dist/index.js": []
