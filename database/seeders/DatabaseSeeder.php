@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\News;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -22,5 +23,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
 
         ]);
+
+        News::factory(10)->count(10)->create();    
     }
 }

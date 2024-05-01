@@ -31,9 +31,10 @@ class BooksTableSeeder extends Seeder
                     'title' => $record['title'],       
                     'category' => $record['category'],
                     'available' => true, // Set 'available' to true by default
+                    'created_by' => 1,
+                    'updated_by' => 1,
                     'created_at' => now(),
-                    'updated_at' => now(),
-                    'user_id' => 1
+                    'updated_at' => now()
                 ]);
             }
         } catch (\Exception $e) {

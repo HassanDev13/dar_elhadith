@@ -30,9 +30,10 @@ return new class extends Migration
                 'Association books',
             ]);
             $table->boolean('available')->default(true); 
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->constrained('users');
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');// Define the user_id column
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
 
         });
     }

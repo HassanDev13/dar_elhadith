@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->json('images')->nullable(); 
+            $table->string('image_path')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id')->default(1); // Define the user_id column
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->constrained('users');
 
         });
     }

@@ -51,6 +51,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        fontFamily: {
+        'serif': ['Noto Nastaliq Urdu'],
+      },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -73,5 +76,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+      require("tailwindcss-animate"),
+      require('tailwindcss-font-inter')({
+        importFontWeights: [400, 700],
+      }),
+  ],
 }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use App\Http\Resources\NewsResource;
 
 class NewsController extends Controller
 {
@@ -12,10 +15,15 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
         $news = News::all();
-        return view('news.index', compact('news'));
+
+        
+      return inertia("News/Index", [
+            "news" =>NewsResource::collection($news),
+            'success' => session('success'),
+        ]);
     }
 
     /**
@@ -48,6 +56,10 @@ class NewsController extends Controller
         return redirect()->route('news.index')
             ->with('success', 'News created successfully.');
     }
-
-    // Add other CRUD operations (show, edit, update, destroy) as needed
+   public function destroy($id){
+    $news = News::find($id);
+    $news->delete();
+    return redirect()->route('news.index')
+            ->with('success', 'News deleted successfully.');
+   }
 }
