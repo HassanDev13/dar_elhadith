@@ -22,9 +22,7 @@ export function NavMenu({ auth }: { auth: any }) {
                                 </Link>
                             </div>
                             <div className="bg-green-800 hover:bg-green-700 hover:text-white rounded-md p-2 transition-all duration-300">
-                                <Link href={route("register")} className="">
-                                    إنشاء مستخدم
-                                </Link>
+                                <Link href={route("login")}>إنشاء مستخدم</Link>
                             </div>
                         </div>
                     ) : (

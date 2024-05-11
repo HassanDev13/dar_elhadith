@@ -30,7 +30,7 @@ class BooksTableSeeder extends Seeder
                     'author' => $record['author'],
                     'title' => $record['title'],       
                     'category' => $record['category'],
-                    'available' => true, // Set 'available' to true by default
+                    'available' => true, 
                     'created_by' => 1,
                     'updated_by' => 1,
                     'created_at' => now(),

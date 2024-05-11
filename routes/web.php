@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\BooksController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,11 +23,11 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Route::get('/dashboard', [DashboardController::class, 'index'])
-    //     ->name('dashboard');
-
-    Route::resource('news', NewsController::class);
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+        
     Route::resource('books', BooksController::class);
+    Route::resource('news', NewsController::class);
     Route::resource('user', UserController::class);
 });
 

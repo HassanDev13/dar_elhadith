@@ -18,16 +18,16 @@ return new class extends Migration
            
              $table->enum('category', [
                 'literature',
-                'Human Development',
-                'Hadith and its sciences',
-                'Jurisprudence,principles objectives',
-                'The Quran and its sciences',
-                'the language',
-                "Algeria history",
-                'History and biographies',
-                'Doctrine and recommendation',
-                'Islamic thought and studies',
-                'Association books',
+                'HumanDevelopment',
+                'HadithAndItsSciences',
+                'JurisprudencePrinciplesObjectives',
+                'TheQuranAnditsSciences',
+                'theLanguage',
+                "AlgeriaHistory",
+                'HistoryAndBiographies',
+                'DoctrineAndRecommendation',
+                'IslamicThoughtAndStudies',
+                'AssociationBooks',
             ]);
             $table->boolean('available')->default(true); 
             $table->foreignId('created_by')->constrained('users');

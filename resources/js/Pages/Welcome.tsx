@@ -22,7 +22,7 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                         {/* Left Section */}
                         <div className="text-right content-center w-full text-xl">
                             <h2 className="text-2xl font-bold mb-2">الحضانة</h2>
-                            <p className=" text-gray-600  ">
+                            <p className=" text-gray-600  text-right ">
                                 تقع في الطابق الثاني من مؤسسة دار الحديث، تعتبر
                                 مكانًا مثاليًا لتعليم ورعاية الأطفال الصغار.
                                 تمتد هذه الروضة عبر مساحة واسعة. تهدف إلى تحقيق
@@ -34,7 +34,7 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                         {/* Right Section - Image */}
                         <div className="">
                             <img
-                                src="../../images/drh2.svg"
+                                src="../../images/drh2.png"
                                 alt=""
                                 className="md:w-[200%] h-full md:mr-72 rounded-lg"
                             />{" "}

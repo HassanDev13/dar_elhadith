@@ -1,8 +1,13 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { PageProps } from "@/types";
+import { News, PageProps } from "@/types";
 import { Head, Link, router } from "@inertiajs/react";
+import { route } from "../../../../vendor/tightenco/ziggy/src/js";
 
-export default function Index({ news, auth }: PageProps<{}>) {
+export default function Index({
+    news,
+    auth,
+    success,
+}: PageProps<{ success: string }>) {
     const deleteNews = (newsItem: any) => {
         if (!window.confirm("Are you sure you want to delete the news?")) {
             return;
@@ -22,7 +27,7 @@ export default function Index({ news, auth }: PageProps<{}>) {
                     </h2>
                     <Link
                         href={route("news.create")}
-                        className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
+                        className="bg-green-800 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
                     >
                         Add new
                     </Link>
@@ -32,7 +37,13 @@ export default function Index({ news, auth }: PageProps<{}>) {
             <Head title="News" />
 
             <div className="border-t-2 ">
-                <table className="w-full ">
+                {success && (
+                    <div className="bg-emerald-500 py-2 text-center px-4 text-white rounded mb-4 animate-fadeout animate-accordion">
+                        {success}
+                    </div>
+                )}
+
+                <table className="w-screen  ">
                     <thead className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <tr className="">
                             <th>id</th>
@@ -43,26 +54,24 @@ export default function Index({ news, auth }: PageProps<{}>) {
                             <th>ACTIONS</th>
                         </tr>
                     </thead>
-                    <tbody className="">
+                    <tbody className="text-center">
                         {news.data.map((newsItem) => (
                             <tr
                                 key={newsItem.id}
-                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700  hover:bg-amber-200 transition-all duration-300"
                             >
                                 <td>{newsItem.id}</td>
                                 <td>
                                     <img
                                         src={newsItem.image_path}
-                                        className="w-24"
+                                        className="w-10 h-10 object-cover rounded-lg"
                                     />
                                 </td>
-                                <td>
+                                <td className="hover:underline">
                                     <Link
                                         href={route("news.show", newsItem.id)}
                                     >
-                                        {newsItem.title !== null
-                                            ? newsItem.title
-                                            : "No Title"}
+                                        {newsItem.title}
                                     </Link>
                                 </td>
                                 <td className="text-nowrap">
@@ -72,7 +81,7 @@ export default function Index({ news, auth }: PageProps<{}>) {
                                 <td className="text-nowrap">
                                     <Link
                                         href={route("news.edit", newsItem.id)}
-                                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1"
+                                        className="font-medium text-green-600 dark:text-blue-500 hover:underline mx-1"
                                     >
                                         Edit
                                     </Link>

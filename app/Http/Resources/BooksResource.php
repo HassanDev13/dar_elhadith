@@ -2,17 +2,15 @@
 
 namespace App\Http\Resources;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Str;
 
-class NewsResource extends JsonResource
+class BooksResource extends JsonResource
 {
-    public static $wrap = false;
-
     /**
      * Transform the resource into an array.
      *
@@ -20,20 +18,16 @@ class NewsResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $image_path = $this->image_path;
-        if ($request->hasFile('image_path')) {
-            $image = $request->file('image');
-            $image_path = $image->store('public/newsimages');
-        }
-
-        return [
+      return [
             'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
+            'author' => $this->author,
             'created_at' => (new Carbon($this->created_at))->format('Y-m-d'),
-            'image_path' =>  $image_path, 
+            'category' =>  $this->category,
+            'available'=>  $this ->avilable,
             'createdBy' => new UserResource($this->createdBy),
             'updatedBy' => new UserResource($this->updatedBy),
         ];
+      
     }
 }

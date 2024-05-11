@@ -51,9 +51,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        fontFamily: {
-        'serif': ['Noto Nastaliq Urdu'],
       },
+      fontFamily: {
+        'serif': ['Noto Nastaliq Urdu'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,17 +69,22 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fadeout": {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fadeout": "fadeout 5s ease-out",
       },
     },
   },
   plugins: [
-      require("tailwindcss-animate"),
-      require('tailwindcss-font-inter')({
-        importFontWeights: [400, 700],
-      }),
+    require("tailwindcss-animate"),
+    require('tailwindcss-font-inter')({
+      importFontWeights: [400, 700],
+    }),
   ],
 }
