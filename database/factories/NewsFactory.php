@@ -24,7 +24,7 @@ class NewsFactory extends Factory
             'title' => $faker->sentence(), 
             'description' => $faker->realText(), 
             'image_path' => $faker->imageUrl(),
-            'created_by' => 1,
+            'created_by' => 3,
             'updated_by' => 1,
             'created_at' => time(),
             'updated_at' => time(),

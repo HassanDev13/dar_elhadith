@@ -8,6 +8,8 @@ import { Head, Link, useForm } from "@inertiajs/react";
 import { route } from "../../../../vendor/tightenco/ziggy/src/js";
 
 export default function Edit({ auth, news }: PageProps<{ news: News }>) {
+    console.log(news);
+
     const { data, setData, post, errors, reset } = useForm({
         image: "",
         title: news.title || "",

@@ -70,7 +70,7 @@ class BooksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $books = Book::find($id);
         return Inertia::render('Books/Show', [
@@ -84,6 +84,8 @@ class BooksController extends Controller
     public function edit(Book $books)
     {
        return Inertia::render('Books/Edit', [
+            dd($books),
+
             'books' => new BooksResource($books),
         ]);
         

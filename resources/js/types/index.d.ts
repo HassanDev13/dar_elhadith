@@ -16,6 +16,8 @@ export interface News {
     image_path: string;
     data: News[];
     success: string;
+    meta: Meta;
+
 }
 
 export enum BookCategory {
@@ -60,6 +62,7 @@ export interface Book{
   category: BookCategory;
   success: string;
   meta: Meta;
+  data: Book[];
 }
 
 export interface QueryParams {
@@ -77,6 +80,8 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     };
     news : {
         news :News;
+        meta: Meta;
+        books:Book
     };
     books :{
         data: Book[];

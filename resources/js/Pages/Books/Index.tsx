@@ -6,6 +6,8 @@ import Pagination from "../../Components/Pagination";
 import { QueryParams } from "../../types/index.d";
 import SelectInput from "@/Components/SelectInput";
 import TextInput from "@/Components/TextInput";
+import { LightBulbIcon } from "@heroicons/react/16/solid";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 export default function Index({
     books,
@@ -83,7 +85,8 @@ export default function Index({
                     </div>
                 )}
                 <div className=" text-nowrap flex justify-center space-x-4 p-4 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500">
-                    <th className="">
+                    <th className="flex justify-between bg-white">
+                        <MagnifyingGlassIcon className="h-6  w-7 text-gray-500 " />
                         <TextInput
                             className=" text-nowrap "
                             defaultValue={queryParams.title}

@@ -1,13 +1,35 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { News, PageProps } from "@/types";
+import { News, PageProps, QueryParams } from "@/types";
 import { Head, Link, router } from "@inertiajs/react";
 import { route } from "../../../../vendor/tightenco/ziggy/src/js";
+import TextInput from "@/Components/TextInput";
+import Pagination from "@/Components/Pagination";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 export default function Index({
     news,
     auth,
     success,
-}: PageProps<{ success: string }>) {
+    queryParams,
+}: PageProps<{ success: string; queryParams: QueryParams }>) {
+    queryParams = queryParams || {};
+    const searchFieldChanged = (name: keyof QueryParams, value: any) => {
+        if (value) {
+            queryParams[name] = value;
+        } else {
+            delete queryParams[name];
+        }
+
+        router.get(route("news.index"), queryParams as any);
+    };
+
+    const onKeyPress = (name: keyof QueryParams, e: any) => {
+        if (e.key !== "Enter") return;
+
+        const inputValue = (e.target as HTMLInputElement).value;
+        searchFieldChanged(name, inputValue);
+    };
+
     const deleteNews = (newsItem: any) => {
         if (!window.confirm("Are you sure you want to delete the news?")) {
             return;
@@ -42,6 +64,20 @@ export default function Index({
                         {success}
                     </div>
                 )}
+                <div className=" text-nowrap flex justify-center space-x-4 p-4 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500">
+                    <th className="flex justify-between bg-white">
+                        <MagnifyingGlassIcon className="h-6  w-7 text-gray-500 " />
+                        <TextInput
+                            className=" text-nowrap"
+                            defaultValue={queryParams.title}
+                            placeholder="News Title"
+                            onBlur={(e: React.FocusEvent<HTMLInputElement>) =>
+                                searchFieldChanged("title", e.target.value)
+                            }
+                            onKeyPress={(e) => onKeyPress("title", e)}
+                        />
+                    </th>
+                </div>
 
                 <table className="w-screen  ">
                     <thead className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -97,6 +133,7 @@ export default function Index({
                     </tbody>
                 </table>
             </div>
+            <Pagination links={news.meta.links} />
         </AuthenticatedLayout>
     );
 }

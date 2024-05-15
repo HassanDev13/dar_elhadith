@@ -22,11 +22,22 @@ class NewsController extends Controller
      */
      public function index()
     {
-        $news = News::all();
+        $query = News::query();
 
-        
-      return inertia("News/Index", [
-            "news" =>NewsResource::collection($news),
+        $sortField = request("sort_field", 'created_at');
+        $sortDirection = request("sort_direction", "desc");
+
+        if (request("title")) {
+            $query->where("title", "like", "%" . request("title") . "%");
+        }
+
+        $news = $query->orderBy($sortField, $sortDirection)
+            ->paginate(10)
+            ->onEachSide(1);
+
+        return inertia("News/Index", [
+            "news" => NewsResource::collection($news),
+            'queryParams' => request()->query() ?: null,
             'success' => session('success'),
         ]);
     }
@@ -78,6 +89,7 @@ class NewsController extends Controller
     public function edit(News $news)
     {
         return Inertia::render('News/Edit', [
+            dd($news),
             'news' => new NewsResource($news),
         ]);
     }
@@ -106,10 +118,13 @@ class NewsController extends Controller
     return redirect()->route('news.index')
             ->with('success', 'News deleted successfully.');
    }
+
+
+
    public function show($id){
-    $news = News::find($id);
-    return Inertia::render('News/Show', [
-        'news' => new NewsResource($news),
-    ]);
+        $news = News::find($id);
+        return Inertia::render('News/Show', [
+            'news' => new NewsResource($news),
+        ]);
    }
 }
