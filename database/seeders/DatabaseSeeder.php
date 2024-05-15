@@ -24,6 +24,5 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        News::factory(10)->count(10)->create();    
     }
 }

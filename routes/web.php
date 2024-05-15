@@ -10,24 +10,13 @@ use Inertia\Inertia;
 use App\Models\News;
 
 
-Route::get('/', function () {
-
-        $news = News::all();
-
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'news' => $news,
-
-    ]);
-});
+Route::redirect('/','/dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
         
     Route::resource('books', BooksController::class);
-    Route::resource('news', NewsController::class);
     Route::resource('user', UserController::class);
 });
 

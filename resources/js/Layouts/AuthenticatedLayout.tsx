@@ -32,10 +32,7 @@ export default function AuthenticatedLayout({
                         >
                             لوحة القيادة
                         </NavLink>
-                        <NavLink
-                            href={route("news.index")}
-                            active={route().current("news.index")}
-                        >
+                        <NavLink href="#" active={route().current("#")}>
                             الأخبار
                         </NavLink>
                         <NavLink
