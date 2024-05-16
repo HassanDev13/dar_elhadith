@@ -20,7 +20,7 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function index()
+    public function index()
     {
         $query = News::query();
 
@@ -60,30 +60,23 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
-       $data=$request->validated(); 
+        $data = $request->validated();
 
-        /** @var $image \Illuminate\Http\UploadedFile */
+
         $image = $data['image'] ?? null;
         $data['created_by'] = Auth::id();
         $data['updated_by'] = Auth::id();
         if ($image) {
-            $data['image'] = $image->store('news/' . Str::random(), 'public');
+            $path = $image->store('news/' . Str::random(), 'public');
+            $url = asset('storage/' . $path); // Generate the full URL
+            $data['image_path'] = $url;
         }
-        News::create($data);
 
+        News::create($data);
+       
         return to_route('news.index')
             ->with('success', 'News was created');
-
-    //     $path =null;
-    //    if ($request->hasFile('image')) {
-    //         $directory = 'newsimages';
-    //         Storage::makeDirectory($directory);
-    //         $path = $request->file('image_path')->store($directory, 'public'); 
-    //     }
-    //     News::create($data);
-
-    //     return redirect()->route('news.index')
-    //         ->with('success', 'News created successfully.');    
+    
     }
 
     public function edit(News $news)
@@ -94,7 +87,8 @@ class NewsController extends Controller
         ]);
     }
 
-    public function update(UpdateNewsRequest $request , News $news){
+    public function update(UpdateNewsRequest $request, News $news)
+    {
         $data = $request->validated();
         $image = $data['image'] ?? null;
         $data['updated_by'] = Auth::id();
@@ -108,23 +102,23 @@ class NewsController extends Controller
 
         return to_route('news.index')
             ->with('success', "news \"$news->title\" was updated");
-
-
     }
 
-   public function destroy($id){
-    $news = News::find($id);
-    $news->delete();
-    return redirect()->route('news.index')
+    public function destroy($id)
+    {
+        $news = News::find($id);
+        $news->delete();
+        return redirect()->route('news.index')
             ->with('success', 'News deleted successfully.');
-   }
+    }
 
 
 
-   public function show($id){
+    public function show($id)
+    {
         $news = News::find($id);
         return Inertia::render('News/Show', [
             'news' => new NewsResource($news),
         ]);
-   }
+    }
 }

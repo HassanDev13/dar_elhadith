@@ -3,13 +3,14 @@ import { useForm } from "@inertiajs/react";
 import { Head, Link } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import TextInput from "@/Components/TextInput";
+import { Input } from "@/Components/ui/input";
 import TextAreaInput from "@/Components/TextAreaInput";
 import InputLabel from "@/Components/InputLabel";
 import InputError from "@/Components/InputError";
 
 export default function Create({ auth }: PageProps<{}>) {
     const { data, setData, post, errors, reset } = useForm({
-        image: "",
+        image: null,
         title: "",
         description: "",
     });
@@ -48,20 +49,20 @@ export default function Create({ auth }: PageProps<{}>) {
                                 >
                                     News Image
                                 </InputLabel>
-                                <TextInput
-                                    id="news_image_path"
-                                    type="file"
-                                    name="image"
-                                    isFocused={true}
+                                <Input
                                     className="mt-1 block w-full border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    id="picture"
+                                    type="file"
+                                    
+                                    name="image"
                                     onChange={(e) =>
                                         setData(
                                             "image",
-                                            e.target.files?.[0]?.toString() ||
-                                                ""
+                                            e.target.files[0]
                                         )
                                     }
                                 />
+                             
                                 <InputError>{errors.image}</InputError>
                             </div>
                             <div className="mt-4">
