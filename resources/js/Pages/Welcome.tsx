@@ -2,6 +2,7 @@ import { Link, Head } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import News from "./MyComponents/news";
 import { NavMenu } from "./MyComponents/NavMenu";
+import { Button } from "@/Components/ui/button";
 
 export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
     return (
@@ -11,8 +12,8 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                 <header className=" ">
                     <NavMenu auth={auth} />
                 </header>
-                <div className="container space-y-10 ">
-                    <div className=" space-y-7">
+                <div className="container space-y-10">
+                    <div className="rounded-md space-y-7">
                         <News news={news} />
                         <h1 className="text-green-950 text-4xl font-bold text-center ">
                             مؤسسة دار الحديث
@@ -75,7 +76,7 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                             </div>
                             <div className="mt-5 ">
                                 <h1 className="font-semibold  text-4xl text-green-950">
-                                    الميــــــــــــــــــــــــزات
+                                    الميــــــــــــــزات
                                 </h1>
                                 <div>
                                     <ul className=" list-inside text-center  text-nowrap text-lg ">
@@ -91,11 +92,50 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                     <div className="bg-gray-100 p-4 rounded-md mt-4">
                         Content 4
                     </div>
-                    <div className="bg-gray-100 p-4 rounded-md mt-4">
-                        Content 5
+                    <div className="rounded-md">
+                        <div className="flex flex-col-reverse md:flex-row  w-full space-y-4 space-y-reverse  md:space-y-0 md:space-x-9">
+                            <div className=" space-y-6  rounded-md w-full flex flex-col justify-center items-end">
+                                <h6 className="text-green-950 text-2xl md:text-4xl text-end font-bold">
+                                    المدرسة القرآنية و المصلى
+                                </h6>
+                                <p className="text-right text-xl md:text-2xl">
+                                    الطابق الأرضي يضم مرافق شاملة تخدم احتياجات
+                                    المجتمع المحلي بشكل متكامل. يُعَدُّ مسجد
+                                    الصلاة محوراً رئيسياً للتواصل الروحي
+                                    والاجتماعي، حيث يجتمع المسلمون لأداء الصلوات
+                                    الخمس في جو من الخشوع والتأمل. وتمتد جوانب
+                                    الخدمة الدينية لتشمل قاعة لتعليم القرآن، حيث
+                                    يمكن للمسلمين من جميع الأعمار والمستويات
+                                    الاستفادة من الدروس والمحاضرات لفهم وتلاوة
+                                    القرأن الكريم
+                                </p>
+                            </div>
+                            <div className="rounded-md w-full">
+                                <img
+                                    src="../../images/drh2.png"
+                                    alt=""
+                                    className=" w-full"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="bg-gray-100 p-4 rounded-md mt-4">
-                        Content 6
+                    <div
+                        className="flex flex-col justify-center items-center space-y-4 rounded-3xl p-4 md:p-7  md:py-20"
+                        style={{
+                            backgroundImage: "url('../../images/drh2.png')",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                        }}
+                    >
+                        <h3 className="font-bold  text-2xl md:text-4xl text-white">نبذة تاريخية</h3>
+                        <p className="text-center px-9 text-white">
+                            دار الحديث تلمسان هي مسجد ومدرسة لتحفيظ القرآن في
+                            تلمسان في الجزائر، تأسست في 27 سبتمبر 1937م، وقام
+                            بافتتاحها كلاً من الإمامين عبد الحميد بن باديس
+                            و‌محمد البشير الإبراهيمي. الدار عبارة عن بناء على
+                            الطراز المعماري الإسلامي عربي وأندلسي.
+                        </p>
+                        <Button className="bg-white text-black">المزيد</Button>
                     </div>
                     <div className="bg-gray-100 p-4 rounded-md mt-4">
                         Content 7

@@ -20,12 +20,12 @@ export default function News({ news }: { news: any[] }) {
         return null;
     }
     return (
-        <>
+        <div className="flex flex-col justify-center items-center space-y-8">
             <h1 className="text-4xl text-green-900 font-bold text-center">
                 آخر الآخبار
             </h1>
-            <Carousel className="mt-9">
-                <CarouselContent className=" w-auto ">
+            <Carousel className="w-full md:w-11/12 ">
+                <CarouselContent className="">
                     {news.map((item, index) => (
                         <CarouselItem key={index} className="">
                             <Card className=" rounded-xl">
@@ -46,10 +46,10 @@ export default function News({ news }: { news: any[] }) {
                             </Card>
                         </CarouselItem>
                     ))}
-                </CarouselContent>
+                </CarouselContent  >
                 <CarouselPrevious />
                 <CarouselNext />
             </Carousel>
-        </>
+        </div>
     );
 }
