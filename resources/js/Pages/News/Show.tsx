@@ -14,7 +14,7 @@ export default function Show({ news, auth }: PageProps<{ news: News }>) {
                     </h2>
                     <Link
                         href={route("news.edit", news.id)}
-                        className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
+                        className="bg-emerald-500 px-7 py-2 text-white font-bold text-xl rounded shadow transition-all hover:bg-emerald-600"
                     >
                         Edit
                     </Link>
@@ -84,6 +84,14 @@ export default function Show({ news, auth }: PageProps<{ news: News }>) {
                                 <p className="mt-1">{news.description}</p>
                             </div>
                         </div>
+                    </div>
+                    <div className="mt-4 text-right  item center">
+                        <Link
+                            href={route("news.index")}
+                            className="bg-emerald-500 px-7 py-2 text-white font-bold text-xl rounded shadow transition-all hover:bg-emerald-600"
+                        >
+                            Cancel
+                        </Link>
                     </div>
                 </div>
             </div>

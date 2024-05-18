@@ -6,6 +6,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { News, PageProps } from "@/types";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { route } from "../../../../vendor/tightenco/ziggy/src/js";
+import { Input } from "@/Components/ui/input";
 
 export default function Edit({ auth, news }: PageProps<{ news: News }>) {
     console.log(news);
@@ -51,18 +52,19 @@ export default function Edit({ auth, news }: PageProps<{ news: News }>) {
                             )}
                             <div>
                                 <InputLabel
-                                    htmlFor="project_image_path"
-                                    value="Project Image"
+                                    htmlFor="news_image_path"
+                                    value="News Image"
                                 />
-                                <TextInput
-                                    id="project_image_path"
+                                <Input
+                                    id="news_image_path"
                                     type="file"
-                                    name="image"
+                                    name="images[]"
                                     className="mt-1 block w-full"
+                                    multiple
                                     onChange={(e) =>
                                         setData(
                                             "image",
-                                            e.target.files?.[0]?.name || ""
+                                            Array.from(e.target.files)
                                         )
                                     }
                                 />

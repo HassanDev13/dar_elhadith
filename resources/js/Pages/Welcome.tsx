@@ -11,11 +11,11 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                 <header className=" ">
                     <NavMenu auth={auth} />
                 </header>
-                <div className="container space-x-4 space-y-10 ">
-                    <div className="p-2 rounded-md mb-4 space-y-7">
+                <div className="container space-y-10 ">
+                    <div className=" space-y-7">
                         <News news={news} />
                         <h1 className="text-green-950 text-4xl font-bold text-center ">
-                            طوابق مؤسسة دار الحديث
+                            مؤسسة دار الحديث
                         </h1>
                     </div>
                     <div className="space-y-4 ">
@@ -36,11 +36,28 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                             <img
                                 src="../../images/drh2.png"
                                 alt=""
-                                className=" w-full"
+                                className=" "
                             />{" "}
                         </div>
                     </div>
-                    <div className="bg-gray-100  flex flex-col justify-center ">
+                    <div className="bg-gray-100">
+                        <div className="bg-purple-300 text-right ">
+                            <div>
+                                <h1 className="text-4xl font-bold">المكتبة</h1>
+                            </div>
+                            <div>
+                                تعد مكتبة دار الحديث الإسلامية منارة علمية
+                                وثقافية متميزة، حيث تضم مجموعة واسعة ومتنوعة من
+                                الكتب والمخطوطات في مختلف مجالات العلوم
+                                الإسلامية. تحتوي المكتبة على أقسام متخصصة تشمل
+                                علوم القرآن والتفسير، الحديث الشريف وعلومه،
+                                الفقه وأصوله، العقيدة الإسلامية، والتاريخ
+                                الإسلامي. تهدف المكتبة إلى نشر المعرفة وتعزيز
+                                الفهم الصحيح للإسلام من خلال توفير مصادر موثوقة
+                                وشاملة للباحثين والطلاب وجميع المهتمين بالعلوم
+                                الإسلامية.
+                            </div>
+                        </div>
                         <div className="bg-green-200 rounded-lg border-2 border-green-800 text-center  p-5">
                             <div className=" ">
                                 <h1 className="font-semibold text-4xl text-green-950">
@@ -68,23 +85,6 @@ export default function Welcome({ auth, news }: PageProps<{ news: any[] }>) {
                                         <li>أكثر من 7000 كتاب ووثيقة-</li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="bg-purple-300 text-right flex flex-col justify-center  ">
-                            <div>
-                                <h1 className="text-4xl font-bold">المكتبة</h1>
-                            </div>
-                            <div>
-                                تعد مكتبة دار الحديث الإسلامية منارة علمية
-                                وثقافية متميزة، حيث تضم مجموعة واسعة ومتنوعة من
-                                الكتب والمخطوطات في مختلف مجالات العلوم
-                                الإسلامية. تحتوي المكتبة على أقسام متخصصة تشمل
-                                علوم القرآن والتفسير، الحديث الشريف وعلومه،
-                                الفقه وأصوله، العقيدة الإسلامية، والتاريخ
-                                الإسلامي. تهدف المكتبة إلى نشر المعرفة وتعزيز
-                                الفهم الصحيح للإسلام من خلال توفير مصادر موثوقة
-                                وشاملة للباحثين والطلاب وجميع المهتمين بالعلوم
-                                الإسلامية.
                             </div>
                         </div>
                     </div>

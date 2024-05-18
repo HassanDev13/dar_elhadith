@@ -61,47 +61,45 @@ class NewsController extends Controller
     public function store(StoreNewsRequest $request)
     {
         $data = $request->validated();
-
-
-        $image = $data['image'] ?? null;
         $data['created_by'] = Auth::id();
         $data['updated_by'] = Auth::id();
-        if ($image) {
-            $path = $image->store('news/' . Str::random(), 'public');
-            $url = asset('storage/' . $path); // Generate the full URL
-            $data['image_path'] = $url;
+
+        $news = News::create($data);
+
+        if ($request->hasFile('images')) {
+            $imagePaths = [];
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('news/' . Str::random(), 'public');
+                $imagePaths[] = asset('storage/' . $path);
+            }
+            $news->update(['image_paths' => json_encode($imagePaths)]);
         }
 
-        News::create($data);
-       
         return to_route('news.index')
             ->with('success', 'News was created');
-    
     }
 
-    public function edit(News $news)
-    {
-        return Inertia::render('News/Edit', [
-            'news' => new NewsResource($news),
-        ]);
-    }
 
     public function update(UpdateNewsRequest $request, News $news)
     {
         $data = $request->validated();
-        $image = $data['image'] ?? null;
         $data['updated_by'] = Auth::id();
-        if ($image) {
-            if ($news->image_path) {
-                Storage::disk('public')->deleteDirectory(dirname($news->image_path));
+
+        if ($request->hasFile('images')) {
+            $imagePaths = json_decode($news->image_paths, true) ?? [];
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('news/' . Str::random(), 'public');
+                $imagePaths[] = asset('storage/' . $path);
             }
-            $data['image_path'] = $image->store('news-images/' . Str::random(), 'public');
+            $data['image_paths'] = json_encode($imagePaths);
         }
+
         $news->update($data);
 
         return to_route('news.index')
-            ->with('success', "news \"$news->title\" was updated");
+            ->with('success', "News \"$news->title\" was updated");
     }
+
 
     public function destroy($id)
     {

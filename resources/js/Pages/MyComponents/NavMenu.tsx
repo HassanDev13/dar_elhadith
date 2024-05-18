@@ -21,9 +21,6 @@ export function NavMenu({ auth }: { auth: any }) {
                                     لوحة القيادة
                                 </Link>
                             </div>
-                            <div className="bg-green-800 hover:bg-green-700 hover:text-white rounded-md p-2 transition-all duration-300">
-                                <Link href={route("login")}>إنشاء مستخدم</Link>
-                            </div>
                         </div>
                     ) : (
                         <div>
@@ -60,7 +57,7 @@ export function NavMenu({ auth }: { auth: any }) {
                     href="/link4"
                     className="hover:bg-green-700 hover:text-white rounded-md p-2 max-sm:hidden transition-all duration-300"
                 >
-                    المصلى{" "}
+                    المسجد{" "}
                 </Link>
                 <Link
                     href="/link6"

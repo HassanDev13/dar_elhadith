@@ -33,7 +33,7 @@ export default function News({ news }: { news: any[] }) {
                                     style={{
                                         backgroundImage: `url(${item.image_path})`,
                                     }}
-                                    className="h-60 bg-cover bg-center rounded-t-xl"
+                                    className="h-96 bg-cover bg-center rounded-t-xl"
                                 ></CardContent>
                                 <CardFooter className="bg-green-900 text-white flex p-3 justify-between h-full rounded-b-xl">
                                     <div>

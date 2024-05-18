@@ -10,14 +10,28 @@ import InputError from "@/Components/InputError";
 
 export default function Create({ auth }: PageProps<{}>) {
     const { data, setData, post, errors, reset } = useForm({
-        image: null,
+        images: [],
         title: "",
         description: "",
     });
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(route("news.store"));
+
+        const formData = new FormData();
+        formData.append("title", data.title);
+        formData.append("description", data.description);
+        data.images.forEach((image, index) => {
+            formData.append(`images[${index}]`, image);
+        });
+
+        post(route("news.store"), {
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            onSuccess: () => reset(),
+        });
     };
 
     return (
@@ -50,20 +64,20 @@ export default function Create({ auth }: PageProps<{}>) {
                                     News Image
                                 </InputLabel>
                                 <Input
-                                    className="mt-1 block w-full border-gray-300 rounded-md shadow-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                    id="picture"
+                                    id="news_image_path"
                                     type="file"
-                                    
-                                    name="image"
+                                    name="images[]"
+                                    className="mt-1 block w-full"
+                                    multiple
                                     onChange={(e) =>
                                         setData(
-                                            "image",
-                                            e.target.files[0]
+                                            "images",
+                                            Array.from(e.target.files)
                                         )
                                     }
                                 />
-                             
-                                <InputError>{errors.image}</InputError>
+
+                                <InputError>{errors.images}</InputError>
                             </div>
                             <div className="mt-4">
                                 <InputLabel
