@@ -38,12 +38,6 @@ export default function AuthenticatedLayout({
                         >
                             الأخبار
                         </NavLink>
-                        <NavLink
-                            href={route("books.index")}
-                            active={route().current("books.index")}
-                        >
-                            الكتب
-                        </NavLink>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
                             <div className="ms-3 relative">

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\BooksController;
 use App\Http\Controllers\Dashboard;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +25,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
         
-    Route::resource('books', BooksController::class);
     Route::resource('news', NewsController::class);
     Route::resource('user', UserController::class);
 });

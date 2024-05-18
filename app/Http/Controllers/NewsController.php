@@ -82,7 +82,6 @@ class NewsController extends Controller
     public function edit(News $news)
     {
         return Inertia::render('News/Edit', [
-            dd($news),
             'news' => new NewsResource($news),
         ]);
     }
