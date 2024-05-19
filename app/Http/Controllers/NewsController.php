@@ -80,6 +80,13 @@ class NewsController extends Controller
     }
 
 
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateNewsRequest  $request
+     * @param  \App\Models\News  $news
+     * @return \Illuminate\Http\Response
+     */
     public function update(UpdateNewsRequest $request, News $news)
     {
         $data = $request->validated();
@@ -96,7 +103,7 @@ class NewsController extends Controller
 
         $news->update($data);
 
-        return to_route('news.index')
+        return redirect()->route('news.index')
             ->with('success', "News \"$news->title\" was updated");
     }
 

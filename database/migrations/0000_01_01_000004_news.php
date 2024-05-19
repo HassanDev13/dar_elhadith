@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('image_path')->nullable();
-            $table->timestamps();
-            $table->foreignId('created_by')->constrained('users');
-            $table->foreignId('updated_by')->constrained('users');
+        $table->id();
+        $table->string('title');
+        $table->text('description');
+        $table->json('image_path')->nullable(); 
+        $table->foreignId('created_by')->constrained('users');
+        $table->foreignId('updated_by')->constrained('users');
+        $table->timestamps();
+});
 
-        });
     }
 
     /**

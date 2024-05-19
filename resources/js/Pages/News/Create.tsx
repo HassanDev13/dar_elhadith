@@ -21,9 +21,12 @@ export default function Create({ auth }: PageProps<{}>) {
         const formData = new FormData();
         formData.append("title", data.title);
         formData.append("description", data.description);
-        data.images.forEach((image, index) => {
-            formData.append(`images[${index}]`, image);
-        });
+
+        if (data.images && data.images.length > 0) {
+            data.images.forEach((image, index) => {
+                formData.append(`images[${index}]`, image);
+            });
+        }
 
         post(route("news.store"), {
             data: formData,
